@@ -1,8 +1,6 @@
 package com.hzz.admin.exception;
 
-/**
- * Created by zongzhehu on 16-12-12.
- */
+
 public class CustomRuntimeException extends RuntimeException {
     public CustomRuntimeException() {
         super();
