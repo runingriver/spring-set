@@ -17,7 +17,7 @@
 		<google.guava.version>20.0</google.guava.version>
 		<!--spring-->
 		<org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-		<org.mybatis.mybatis.version>3.2.8</org.mybatis.mybatis.version>
+		<org.mybatis.version>3.3.1</org.mybatis.version>
 		<org.mybatis.spring.version>1.2.5</org.mybatis.spring.version>
 		<meerkat.version>2.2.0</meerkat.version>
 		<org.aspectj.version>1.8.0</org.aspectj.version>
@@ -69,16 +69,6 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
@@ -109,13 +99,19 @@
 			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis</artifactId>
-				<version>${org.mybatis.mybatis.version}</version>
+				<version>${org.mybatis.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis-spring</artifactId>
 				<version>${org.mybatis.spring.version}</version>
 			</dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
 
 			<!--spring mvc验证-->
 			<dependency>
