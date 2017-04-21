@@ -1,7 +1,16 @@
 package com.hzz.dao;
 
-import org.springframework.stereotype.Repository;
+import com.hzz.entity.User;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
-@Repository
+import java.util.List;
+
+@Mapper
 public interface UserDao {
+
+    List<User> getAllUser();
+
+    User selectUserByName(@Param("name") String name);
+
 }
