@@ -10,8 +10,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  */
 @SpringBootApplication
 @EnableConfigurationProperties(value = ApplicationConfig.class)
-public class DemoApplication {
+public class QuickstartApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(QuickstartApplication.class, args);
     }
 }

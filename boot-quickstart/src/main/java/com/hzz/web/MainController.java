@@ -1,25 +1,20 @@
 package com.hzz.web;
 
-import javax.annotation.Resource;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.hzz.common.ApplicationConfig;
 import com.hzz.entity.User;
+import com.hzz.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hzz.service.UserService;
-
-import java.util.Date;
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -38,9 +33,7 @@ public class MainController {
 
     @RequestMapping("/hello")
     public String index(Map<String, Object> model) {
-        model.put("time", new Date());
-        model.put("message", this.hello);
-        return "welcome";
+        return "welcome:" + configuration.getName()+ "," + configuration.getVersion();
     }
 
     @RequestMapping(value = "/user/all")
