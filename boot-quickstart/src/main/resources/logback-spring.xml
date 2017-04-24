@@ -3,7 +3,7 @@
 	<include resource="org/springframework/boot/logging/logback/base.xml" />
 
     <logger name="com.hzz" level="DEBUG" />
-
+    <!--日志配置:http://www.cnblogs.com/lixuwu/p/5804793.html-->
     <springProfile name="dev, staging">
         <logger name="com.hzz" level="DEBUG" />
     </springProfile>

@@ -27,7 +27,7 @@
 		<!--数据库连接-->
 		<mysql-connector-java.version>5.1.38</mysql-connector-java.version>
 		<tomcat-jdbc.version>7.0.30</tomcat-jdbc.version>
-		<druid.version>1.0.27</druid.version>
+		<druid.version>1.0.29</druid.version>
 		<!--单元测试,模块测试-->
 		<junit.version>4.12</junit.version>
 		<org.mockito.version>1.9.5</org.mockito.version>
