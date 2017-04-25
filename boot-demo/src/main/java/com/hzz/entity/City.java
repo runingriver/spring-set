@@ -16,56 +16,56 @@
 
 package com.hzz.entity;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-//@Entity
-public class City implements Serializable {
+@Entity
+@Table(name = "ss_city")
+public class City {
 
-	private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-//	@Id
-//	@GeneratedValue
-//	private Long id;
-//
-//	@Column(nullable = false)
-//	private String name;
-//
-//	@Column(nullable = false)
-//	private String state;
-//
-//	@Column(nullable = false)
-//	private String country;
-//
-//	@Column(nullable = false)
-//	private String map;
-//
-//	protected City() {
-//	}
-//
-//	public City(String name, String country) {
-//		super();
-//		this.name = name;
-//		this.country = country;
-//	}
-//
-//	public String getName() {
-//		return this.name;
-//	}
-//
-//	public String getState() {
-//		return this.state;
-//	}
-//
-//	public String getCountry() {
-//		return this.country;
-//	}
-//
-//	public String getMap() {
-//		return this.map;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return getName() + "," + getState() + "," + getCountry();
-//	}
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String country;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "country='" + country + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
