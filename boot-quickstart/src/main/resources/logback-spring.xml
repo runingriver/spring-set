@@ -1,11 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<include resource="org/springframework/boot/logging/logback/base.xml" />
+    <!--默认日志输出到console-->
 
-    <logger name="com.hzz" level="DEBUG" />
-    <!--日志配置:http://www.cnblogs.com/lixuwu/p/5804793.html-->
-    <springProfile name="dev, staging">
-        <logger name="com.hzz" level="DEBUG" />
+    <!--模板示例:PRD环境输出到文件(多个环境逗号分隔)-->
+    <springProfile name="prd">
+        <!--logback属性,定义日志输出格式-->
+        <property name="ENCODER_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %p %logger{36}.%M:%L]-%m%n"/>
+        <!--打error误日志-->
+        <appender name="errorLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${catalina.base}/logs/xxx_error</file>
+            <!--时间滚动策略,按月滚动-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${catalina.base}/logs/xxx_error.%d{yyyy-MM}.log</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${ENCODER_PATTERN}</pattern>
+            </encoder>
+            <!--阈值过滤器,输出指定级别及以上的日志-->
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>error</level>
+            </filter>
+        </appender>
+
+        <!--打印info日志-->
+        <appender name="infoLogger"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${catalina.base}/logs/xxx_log</file>
+            <!--基于时间滚动策略,按天滚动-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${catalina.base}/logs/xxx_log.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${ENCODER_PATTERN}</pattern>
+            </encoder>
+            <!--级别过滤器,只输出指定级别的日志(info)-->
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>info</level>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </filter>
+        </appender>
+
+        <!--获取在properties文件中定义的值-->
+        <springProperty name="logPath" source="hzz.log.path" defaultValue="/home/q/www/logs"/>
+        <!--定义一个appender,实现独立文件保存指定包中的日志-->
+        <appender name="appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <param name="file" value="${logPath}/xx_log.log"/>
+            <param name="append" value="true"/>
+            <!--定义滚动命名,滚动1-3个版本-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                <fileNamePattern>${logPath}/xx_log.%d{yyyy-MM}(%i).log.gz</fileNamePattern>
+                <minIndex>1</minIndex>
+                <maxIndex>3</maxIndex>
+            </rollingPolicy>
+            <!--设置文件到达50M时,滚动-->
+            <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                <MaxFileSize>50MB</MaxFileSize>
+            </triggeringPolicy>
+            <encoder>
+                <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %logger{26}.%M:%L]-%m%n</Pattern>
+                <charset>UTF-8</charset>
+            </encoder>
+        </appender>
+
+        <!--该包下的日志独立输出,并不想上传递(即不保存到root下的FILE文件中)-->
+        <logger name="com.xxx.xxx.xxx" additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="appender"/>
+        </logger>
+
+        <!--定义输出文件-->
+        <root level="INFO">
+            <!--spring-boot定义的滚动日志,但是没有区分错误和正常日志-->
+            <!--<appender-ref ref="FILE" />-->
+            <appender-ref ref="infoLogger"/>
+            <appender-ref ref="errorLogger"/>
+        </root>
     </springProfile>
 
 </configuration>

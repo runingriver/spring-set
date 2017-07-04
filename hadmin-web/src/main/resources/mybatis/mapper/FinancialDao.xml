@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hzz.admin.dao.FinancialDao">
     <insert id="insertIntoFinancial">
-      INSERT INTO sms_financial (mobile, ${col})
+      INSERT INTO test_financial (mobile, ${col})
       VALUES (#{mobile},#{count}) ON DUPLICATE KEY UPDATE ${col}=#{count};
     </insert>
 </mapper>

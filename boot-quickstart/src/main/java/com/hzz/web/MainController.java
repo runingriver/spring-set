@@ -28,6 +28,9 @@ public class MainController {
     @Value("${app.message.hello}")
     private String hello;
 
+    @Value("${project.profile}")
+    private String profile;
+
     @Resource
     ApplicationConfig configuration;
 
@@ -60,6 +63,11 @@ public class MainController {
     @PostMapping(value = "/post")
     public String postMethod() {
         return "application properties value:" + hello;
+    }
+
+    @GetMapping(value = "/profile")
+    public String profileMethod() {
+        return "application properties value:" + profile;
     }
 
 }

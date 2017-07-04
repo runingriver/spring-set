@@ -23,7 +23,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ss_city")
+/*@Table(name = "ss_city")*/
 public class City {
 
     @Id
