@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 /**
  * 如果想部署到tomcat等容器中,需要继承SpringBootServletInitializer
+ * EnableConfigurationProperties配置properties属性注入ApplicationConfig
  */
 @SpringBootApplication
 @EnableConfigurationProperties(value = ApplicationConfig.class)

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+//RestController=Controller + ResponseBody
 @RestController
 public class CityController {
     private static final Logger logger = LoggerFactory.getLogger(CityController.class);

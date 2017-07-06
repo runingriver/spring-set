@@ -5,14 +5,17 @@
 
     <!--模板示例:PRD环境输出到文件(多个环境逗号分隔)-->
     <springProfile name="prd">
+        <!--获取在properties文件中定义的值-->
+        <springProperty name="logPath" source="hzz.log.path" defaultValue="/home/q/www/logs"/>
+
         <!--logback属性,定义日志输出格式-->
         <property name="ENCODER_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %p %logger{36}.%M:%L]-%m%n"/>
         <!--打error误日志-->
         <appender name="errorLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${catalina.base}/logs/xxx_error</file>
+            <file>${logPath}/logs/xxx_error</file>
             <!--时间滚动策略,按月滚动-->
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${catalina.base}/logs/xxx_error.%d{yyyy-MM}.log</fileNamePattern>
+                <fileNamePattern>${logPath}/logs/xxx_error.%d{yyyy-MM}.log</fileNamePattern>
                 <maxHistory>30</maxHistory>
             </rollingPolicy>
             <encoder>
@@ -26,10 +29,10 @@
 
         <!--打印info日志-->
         <appender name="infoLogger"  class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${catalina.base}/logs/xxx_log</file>
+            <file>${logPath}/logs/xxx_log</file>
             <!--基于时间滚动策略,按天滚动-->
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${catalina.base}/logs/xxx_log.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>${logPath}/logs/xxx_log.%d{yyyy-MM-dd}.log</fileNamePattern>
                 <maxHistory>30</maxHistory>
             </rollingPolicy>
             <encoder>
@@ -43,8 +46,6 @@
             </filter>
         </appender>
 
-        <!--获取在properties文件中定义的值-->
-        <springProperty name="logPath" source="hzz.log.path" defaultValue="/home/q/www/logs"/>
         <!--定义一个appender,实现独立文件保存指定包中的日志-->
         <appender name="appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <param name="file" value="${logPath}/xx_log.log"/>
@@ -73,7 +74,7 @@
 
         <!--定义输出文件-->
         <root level="INFO">
-            <!--spring-boot定义的滚动日志,但是没有区分错误和正常日志-->
+            <!--spring-boot定义的文件滚动日志,不按天滚动(10M滚动),且没有区分错误和正常日志-->
             <!--<appender-ref ref="FILE" />-->
             <appender-ref ref="infoLogger"/>
             <appender-ref ref="errorLogger"/>

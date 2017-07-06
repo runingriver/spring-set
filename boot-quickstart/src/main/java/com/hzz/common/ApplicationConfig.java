@@ -6,7 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.List;
 
 /**
- * 指定独立文件: ConfigurationProperties(locations="classpath:/myInfo.properties",prefix = "my")
+ * 还可以指定独立文件: ConfigurationProperties(locations="classpath:/myInfo.properties",prefix = "my")
+ * 将前缀为'app.message'的properties属性注入到相应的变量上
  */
 @ConfigurationProperties(prefix = "app.message", ignoreInvalidFields = true)
 public class ApplicationConfig {

@@ -18,6 +18,9 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * RestController=Controller + ResponseBody
+ */
 @RestController
 public class MainController {
     private static final Logger logger = LoggerFactory.getLogger(MainController.class);
@@ -40,7 +43,6 @@ public class MainController {
     }
 
     @RequestMapping(value = "/user/all")
-    @ResponseBody
     public String getAllUser() {
         List<User> allUsers = userService.getAllUsers();
         String jsonString = JSON.toJSONString(allUsers);
