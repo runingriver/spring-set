@@ -31,7 +31,7 @@ public class MainController {
     @Value("${app.message.hello}")
     private String hello;
 
-    @Value("${project.profile}")
+    @Value("${spring.profiles.active}")
     private String profile;
 
     @Resource
