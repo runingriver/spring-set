@@ -21,10 +21,10 @@ boot-quickstart实际开发中积累的一些使用方法,方便我们快速上�
 ## 打包成jar包运行
 - `cd`到工程目录，
 - `mvn clean package -Dmaven.test.skip=true`打包编译，
-- `cd  tartget/`，`nohup sudo java -jar spring-helper.jar >/dev/null 2>&1 &`运行。
+- `cd  tartget/`，`nohup sudo java -jar boot-quickstart.jar >/dev/null 2>&1 &`运行。
 
 注: 这里可以覆盖`application.properties`中的设置!
-eg: `sudo java -jar sms-mq-consumer.jar --spring.profiles.active=local --server.port=9191 > /dev/null 2>&1` ,覆盖以上两个属性!
+eg: `sudo java -jar boot-quickstart.jar --spring.profiles.active=local --server.port=9191 > /dev/null 2>&1` ,覆盖以上两个属性!
 
 可以做成启动脚本,如工程目录下的`run.sh`脚本.
 
@@ -40,15 +40,15 @@ eg: `sudo java -jar sms-mq-consumer.jar --spring.profiles.active=local --server.
         </plugin>
     ```
 
-- 创建软连接到`/etc/init.d/`目录下: `sudo ln -s /var/yourapp_path/yourapp.jar /etc/init.d/yourapp`
+- 创建软连接到`/etc/init.d/`目录下: `sudo ln -s /home/q/www/quickstart/boot-quickstart.jar /etc/init.d/boot-quickstart`
 - 修改jar的执行权限: `chmod 744 app.jar`
 - 配置启动参数, 文件名要与应用名一致
 
 eg: jar包: appName.jar 启动配置文件: appName.conf
     ```
     JAVA_OPTS="-XX:MaxPermSize=128m -XX:+DisableExplicitGC -verbose:gc -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:./logs/gc.log"
-    LOG_FOLDER="/home/q/www/sms.mq.consumer.qunar.com/logs"
-    PID_FOLDER="/home/q/www/sms.mq.consumer.qunar.com"
+    LOG_FOLDER="/home/q/www/quickstart/logs"
+    PID_FOLDER="/home/q/www/quickstart"
     RUN_ARGS="--spring.profiles.active=local --server.port=9191"
     ```
 注: 都要带引号! 其他一些配置可以参见boot官方文档!
@@ -58,10 +58,10 @@ eg: jar包: appName.jar 启动配置文件: appName.conf
 
 - 设置快捷启动:
     ```
-    alias consumer_start="cd /home/q/www/sms.mq.consumer.qunar.com; sudo /etc/init.d/sms-mq-consumer start"
-    alias consumer_status="cd /home/q/www/sms.mq.consumer.qunar.com; sudo /etc/init.d/sms-mq-consumer status"
-    alias consumer_stop="cd /home/q/www/sms.mq.consumer.qunar.com; sudo /etc/init.d/sms-mq-consumer stop"
-    alias consumer_restart="cd /home/q/www/sms.mq.consumer.qunar.com; sudo /etc/init.d/sms-mq-consumer restart"
+    alias consumer_start="cd /home/q/www/quickstart; sudo /etc/init.d/boot-quickstart start"
+    alias consumer_status="cd /home/q/www/quickstart; sudo /etc/init.d/boot-quickstart status"
+    alias consumer_stop="cd /home/q/www/quickstart; sudo /etc/init.d/boot-quickstart stop"
+    alias consumer_restart="cd /home/q/www/quickstart; sudo /etc/init.d/boot-quickstart restart"
     ```
 
 
