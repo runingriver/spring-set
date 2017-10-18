@@ -5,5 +5,9 @@
 	<groupId>com.hzz.spring</groupId>
 	<artifactId>spring-set</artifactId>
 	<version>0.0.1</version>
+	<modules>
+		<module>aop-demo</module>
+		<module>hadmin-web</module>
+	</modules>
 	<packaging>pom</packaging>
 </project>
