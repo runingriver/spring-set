@@ -12,16 +12,16 @@
         <!--guava-->
         <google.guava.version>20.0</google.guava.version>
         <!--spring-->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <org.mybatis.version>3.3.1</org.mybatis.version>
-        <org.mybatis.spring.version>1.2.5</org.mybatis.spring.version>
+        <org.springframework.version>4.3.12.RELEASE</org.springframework.version>
+        <org.mybatis.version>3.4.5</org.mybatis.version>
+        <org.mybatis.spring.version>1.3.1</org.mybatis.spring.version>
         <meerkat.version>2.2.0</meerkat.version>
-        <org.aspectj.version>1.8.0</org.aspectj.version>
+        <org.aspectj.version>1.8.11</org.aspectj.version>
         <!--servlet jstl-->
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <jstl.version>1.2</jstl.version>
         <!--数据库连接-->
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.44</mysql-connector-java.version>
         <tomcat-jdbc.version>7.0.30</tomcat-jdbc.version>
         <druid.version>1.0.29</druid.version>
         <!--单元测试,模块测试-->
@@ -29,13 +29,13 @@
         <org.mockito.version>1.9.5</org.mockito.version>
 
         <!--logging-->
-        <slf4j.version>1.7.5</slf4j.version>
-        <logback.version>1.0.13</logback.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.1.11</logback.version>
 
         <!--时间处理-->
         <joda-time.version>2.3</joda-time.version>
         <!--json-->
-        <jackson-databind.version>2.8.1</jackson-databind.version>
+        <jackson-databind.version>2.8.10</jackson-databind.version>
         <!--commons-->
         <commons-lang3.version>3.5</commons-lang3.version>
     </properties>
